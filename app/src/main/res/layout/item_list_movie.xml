@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="8dp">
+
+    <ImageView
+        android:id="@+id/iv_thumbnail"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/cover_placeholder"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:text="辅导费发的"
+        android:textSize="12sp"
+        android:gravity="center"/>
+
+    <im.ycz.doumovie.ui.widget.ZRatingBar
+        xmlns:zrating="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rb_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        zrating:numStars="5"
+        zrating:stepSize="0.5"
+        zrating:spacing="6dp"
+        zrating:showLabel="true"
+        zrating:textSize="11sp"
+        zrating:textColor="@android:color/holo_orange_dark"
+        zrating:labelPosition="right"
+        android:isIndicator="true"/>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<im.ycz.doumovie.ui.widget.ZRatingBar-->
+            <!--xmlns:zrating="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/rb_rating"-->
+            <!--style="@style/RatingBar"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:numStars="5"-->
+            <!--android:stepSize="0.5"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:isIndicator="true"-->
+            <!--zrating:showLabel="true"-->
+            <!--zrating:labelPosition="right"-->
+            <!--zrating:spacing="4dp"-->
+            <!--zrating:textColor="@android:color/holo_orange_light"-->
+            <!--zrating:textSize="11sp"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/tv_rating"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_toRightOf="@+id/rb_rating"-->
+            <!--android:layout_marginLeft="4dp"-->
+            <!--android:textSize="11sp"-->
+            <!--android:text="8.9"-->
+            <!--android:visibility="gone"-->
+            <!--android:ellipsize="end"/>-->
+
+    <!--</RelativeLayout>-->
+
+</LinearLayout>

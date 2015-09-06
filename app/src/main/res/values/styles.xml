@@ -1,0 +1,35 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/primary</item>
+    </style>
+
+    <style name="AppTheme.Detail" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:fitsSystemWindows">true</item>
+    </style>
+
+    <style name="RatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingstars</item>
+        <item name="android:minHeight">12dip</item>
+        <item name="android:maxHeight">12dip</item>
+    </style>
+
+    <style name="Text"></style>
+
+    <style name="Text.Large">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/dark</item>
+    </style>
+
+    <style name="Text.Meta">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/gray</item>
+    </style>
+
+</resources>

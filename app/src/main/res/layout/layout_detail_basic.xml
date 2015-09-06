@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/iv_detail_cover"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"/>
+
+    <TextView
+        style="@style/Text.Large"
+        android:id="@+id/tv_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_toRightOf="@id/iv_detail_cover"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:textColor="@android:color/black"
+        android:maxLines="2"
+        android:text="终结者-创世纪"/>
+
+    <im.ycz.doumovie.ui.widget.ZRatingBar
+        xmlns:zrating="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rb_detail_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_alignLeft="@id/tv_detail_title"
+        android:layout_below="@id/tv_detail_title"
+        zrating:numStars="5"
+        zrating:stepSize="0.5"
+        zrating:spacing="6dp"
+        zrating:showLabel="true"
+        zrating:textSize="12sp"
+        zrating:textColor="@android:color/holo_orange_dark"
+        zrating:labelPosition="right"
+        android:isIndicator="true"/>
+
+    <TextView
+        style="@style/Text.Meta"
+        android:id="@+id/tv_detail_rating_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/rb_detail_rating"
+        android:layout_below="@id/tv_detail_title"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="6dp"
+        android:textSize="12sp"
+        android:text="地方"/>
+
+    <TextView
+        style="@style/Text.Meta"
+        android:id="@+id/tv_detail_categary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_alignLeft="@id/tv_detail_title"
+        android:layout_below="@id/rb_detail_rating"
+        android:text="科幻/动作/冒险"/>
+
+    <TextView
+        style="@style/Text.Meta"
+        android:id="@+id/tv_detail_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/tv_detail_title"
+        android:layout_below="@id/tv_detail_categary"
+        android:layout_marginTop="8dp"
+        android:text="美国"/>
+
+</RelativeLayout>

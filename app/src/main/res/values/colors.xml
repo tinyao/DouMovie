@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <color name="primary">#396</color>
+    <color name="primaryDark">#2b8358</color>
+    <color name="accent">#396</color>
+
+    <color name="dark">#111111</color>
+    <color name="gray">#666666</color>
+
+    <color name="light_gray_e">#eee</color>
+    <color name="light_gray_a">#aaa</color>
+    <color name="light_gray_c">#ccc</color>
+    <color name="light_gray_d">#ddd</color>
+
+</resources>

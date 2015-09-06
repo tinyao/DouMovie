@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_detail_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/parallax_image_height"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"/>
+
+    <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/parallax_image_height"
+                android:background="@android:color/white"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/parallax_scroll_margin_top"
+                android:orientation="vertical">
+
+                <include layout="@layout/layout_detail_basic"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:layout_marginBottom="@dimen/activity_vertical_margin"
+                    android:background="@color/light_gray_d"/>
+
+                <include layout="@layout/layout_detail_main"/>
+
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/loading"
+                style="?android:progressBarStyle"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="360dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
+        </FrameLayout>
+
+    </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
+
+
+</FrameLayout>
