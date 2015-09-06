@@ -1,7 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="AppTheme.Detail" parent="AppTheme">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primaryDark</item>
+        <item name="colorAccent">@color/primary</item>
+
     </style>
+
+    <style name="AppTheme.Detail" parent="AppTheme">
+        <!--<item name="android:windowSharedElementEnterTransition">@transition/tran_enter_share_detail</item>-->
+        <!-- specify enter and exit transitions -->
+        <item name="android:windowEnterTransition">@transition/tran_enter_detail</item>
+        <item name="android:windowReturnTransition">@transition/tran_detail_return</item>
+    </style>
+
 
 </resources>

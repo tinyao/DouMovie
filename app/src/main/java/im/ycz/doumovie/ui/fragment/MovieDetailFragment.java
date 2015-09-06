@@ -1,29 +1,22 @@
 package im.ycz.doumovie.ui.fragment;
 
-import android.animation.ObjectAnimator;
-import android.app.Activity;
+import android.animation.Animator;
 import android.app.ProgressDialog;
-import android.content.res.Resources;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Handler;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
-import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.github.ksoichiro.android.observablescrollview.ObservableScrollView;
@@ -32,14 +25,12 @@ import com.github.ksoichiro.android.observablescrollview.ScrollState;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import im.ycz.doumovie.R;
 import im.ycz.doumovie.domain.model.Cast;
-import im.ycz.doumovie.domain.model.Director;
 import im.ycz.doumovie.domain.model.Movie;
 import im.ycz.doumovie.ui.adapter.CastAdapter;
 import im.ycz.doumovie.ui.presenter.MovieDetailPresenter;
@@ -47,7 +38,6 @@ import im.ycz.doumovie.ui.presenter.MovieDetailPresenterImp;
 import im.ycz.doumovie.ui.view.MovieDetailView;
 import im.ycz.doumovie.ui.widget.ZRatingBar;
 import im.ycz.doumovie.utils.anim.AnimUtils;
-import im.ycz.doumovie.utils.view.GridSpacingItemDecoration;
 import im.ycz.doumovie.utils.view.HorizontalSpacingItemDecoration;
 import im.ycz.doumovie.utils.view.PaletteTransformation;
 
@@ -162,23 +152,9 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
 
     @Override
     public void renderMovie(final Movie movie) {
-        if (movie.getPhotos() != null && movie.getPhotos().size() > 0) {
-            Picasso.with(getActivity())
-                    .load(movie.getPhotos().get(0).getImage())
-                    .into(headerImgV);
-        }
         Picasso.with(getActivity())
                 .load(movie.getImage().getLarge())
-                .transform(PaletteTransformation.instance())
-                .into(coverV, new Callback.EmptyCallback(){
-                    @Override
-                    public void onSuccess() {
-                        Bitmap bitmap = ((BitmapDrawable) coverV.getDrawable()).getBitmap(); // Ew!
-                        Palette palette = PaletteTransformation.getPalette(bitmap);
-                        Palette.Swatch swatch = palette.getVibrantSwatch();
-                        headerImgV.setBackgroundColor(swatch.getRgb());
-                    }
-                });
+                .into(coverV);
         titleV.setText(movie.getTitle());
         ratingBar.setRating(movie.getRating().getAverage());
         ratingCountV.setText("(" + movie.getRatingCount() + "人评分" + ")");
@@ -193,6 +169,17 @@ public class MovieDetailFragment extends BaseFragment implements MovieDetailView
             showCasts.addAll(movie.getCasts());
             castsList.setAdapter(new CastAdapter(showCasts));
         }
+
+        if (movie.getPhotos() != null && movie.getPhotos().size() > 0) {
+            Picasso.with(getActivity())
+                    .load(movie.getPhotos().get(0).getImage())
+                    .into(headerImgV);
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
 
     @Override

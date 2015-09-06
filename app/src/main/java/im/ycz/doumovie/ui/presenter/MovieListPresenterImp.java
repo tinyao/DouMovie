@@ -4,14 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.squareup.otto.Subscribe;
-
 import java.util.List;
 
 import im.ycz.doumovie.api.DouMovieApi;
 import im.ycz.doumovie.api.MovieType;
-import im.ycz.doumovie.bus.MovieBus;
-import im.ycz.doumovie.bus.event.MovieClickEvent;
 import im.ycz.doumovie.domain.model.Movie;
 import im.ycz.doumovie.ui.activity.MovieDetailActivity;
 import rx.Observable;
@@ -79,9 +75,9 @@ public class MovieListPresenterImp extends MovieListPresenter{
     }
 
     @Override
-    public void onMovieClicked(Context context, Movie movie) {
+    public void onMovieClicked(Context context, Movie data) {
         Intent detailIntent = new Intent(context, MovieDetailActivity.class);
-        detailIntent.putExtra("movie", movie);
+        detailIntent.putExtra("movie", data);
         context.startActivity(detailIntent);
     }
 

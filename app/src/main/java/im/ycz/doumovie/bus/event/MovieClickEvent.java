@@ -9,8 +9,8 @@ public class MovieClickEvent {
 
     private Movie movie;
 
-    public MovieClickEvent(Movie movie) {
-        this.movie = movie;
+    public MovieClickEvent(Movie clickData) {
+        this.movie = clickData;
     }
 
     public Movie getMovie() {

@@ -12,7 +12,7 @@ public abstract class MovieListPresenter extends Presenter<MovieListView> {
 
     public abstract void getMovies();
 
-    public abstract void onMovieClicked(Context context, Movie movie);
+    public abstract void onMovieClicked(Context context, Movie data);
 
     public abstract boolean isLoaded();
 }

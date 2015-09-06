@@ -1,11 +1,17 @@
 package im.ycz.doumovie.ui.adapter;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
+import android.support.v7.graphics.Palette;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -18,8 +24,9 @@ import im.ycz.doumovie.R;
 import im.ycz.doumovie.bus.event.MovieClickEvent;
 import im.ycz.doumovie.domain.model.Movie;
 import im.ycz.doumovie.bus.MovieBus;
-import im.ycz.doumovie.domain.model.Rating;
+import im.ycz.doumovie.ui.activity.MovieDetailActivity;
 import im.ycz.doumovie.ui.widget.ZRatingBar;
+import im.ycz.doumovie.utils.view.PaletteTransformation;
 
 /**
  * Created by tinyao on 15-8-31.
@@ -75,9 +82,21 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
                 @Override
                 public void onClick(View view) {
                     // 触发事件，跳转到新页面
-                    if(movie != null) {
-                        MovieBus.getBus().post(new MovieClickEvent(movie));
+                    Intent intent = new Intent(view.getContext(), MovieDetailActivity.class);
+                    intent.putExtra("movie", movie);
+                    if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
+                        ActivityOptions options = ActivityOptions
+                                .makeSceneTransitionAnimation((Activity) view.getContext(), coverV, "cover");
+                        view.getContext().startActivity(intent, options.toBundle());
+                    } else {
+                        view.getContext().startActivity(intent);
                     }
+
+                    // start the new activity
+
+//                    if(movie != null) {
+//                        MovieBus.getBus().post(new MovieClickEvent(movie));
+//                    }
                 }
             });
         }
