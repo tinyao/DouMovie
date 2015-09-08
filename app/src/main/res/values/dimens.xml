@@ -10,5 +10,7 @@
     <dimen name="parallax_image_height">180dp</dimen>
     <dimen name="parallax_scroll_margin_top">164dp</dimen>
     <dimen name="item_spacing_small">8dp</dimen>
+    <dimen name="about_header_height">200dp</dimen>
+    <dimen name="about_card_margin">8dp</dimen>
 
 </resources>

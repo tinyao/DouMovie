@@ -8,7 +8,6 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primaryDark</item>
         <item name="colorAccent">@color/primary</item>
-
     </style>
 
     <style name="AppTheme.Detail" parent="AppTheme">

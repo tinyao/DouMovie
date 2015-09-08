@@ -3,6 +3,7 @@ package im.ycz.doumovie.ui.presenter;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class MovieListPresenterImp extends MovieListPresenter{
 
                     @Override
                     public void onError(Throwable e) {
+                        onRequestFailure();
                         Log.d("DEBUG", e.toString());
                     }
 
@@ -59,7 +61,7 @@ public class MovieListPresenterImp extends MovieListPresenter{
     private Observable<List<Movie>> getSpecificMovies(MovieType type) {
         switch (type) {
             case INTHEATRE:
-                return DouMovieApi.getInstance().getIntheaterMovies("北京");
+                return DouMovieApi.getInstance().getIntheaterMovies("");
             case COMING:
                 return DouMovieApi.getInstance().getComingMovies(0, 20);
             case TOP250:
@@ -71,7 +73,7 @@ public class MovieListPresenterImp extends MovieListPresenter{
             case NEWSHOW:
                 return DouMovieApi.getInstance().getNewMovies();
         }
-        return DouMovieApi.getInstance().getIntheaterMovies("北京");
+        return DouMovieApi.getInstance().getIntheaterMovies("");
     }
 
     @Override
@@ -87,6 +89,10 @@ public class MovieListPresenterImp extends MovieListPresenter{
 
     private void showMovies() {
         view.renderMovies(movies);
+    }
+
+    private void onRequestFailure() {
+        view.hideLoading();
     }
 
     @Override

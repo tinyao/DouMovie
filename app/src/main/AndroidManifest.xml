@@ -25,6 +25,8 @@
             android:theme="@style/AppTheme.Detail"
             android:label="@string/title_activity_movie_detail" >
         </activity>
+
+        <activity android:name=".ui.activity.AboutActivity"></activity>
     </application>
 
 </manifest>

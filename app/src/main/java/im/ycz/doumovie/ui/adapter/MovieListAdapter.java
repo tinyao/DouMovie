@@ -87,6 +87,7 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
                     if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
                         ActivityOptions options = ActivityOptions
                                 .makeSceneTransitionAnimation((Activity) view.getContext(), coverV, "cover");
+                        ((Activity) view.getContext()).getWindow().setSharedElementsUseOverlay(false);
                         view.getContext().startActivity(intent, options.toBundle());
                     } else {
                         view.getContext().startActivity(intent);

@@ -9,4 +9,8 @@
     <string name="title_activity_main2">Main2Activit</string>
     <string name="title_activity_movie_detail">MovieDetailActivity</string>
     <string name="label_no_rating">暂无评分</string>
+    <string name="error_network_wrong">Something wrong with your network</string>
+    <string name="error_http_request_failure">Request failed.</string>
+    <string name="action_about">About</string>
+    <string name="about_app_intro">intros</string>
 </resources>

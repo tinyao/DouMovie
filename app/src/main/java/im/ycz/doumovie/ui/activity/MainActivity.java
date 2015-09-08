@@ -2,6 +2,7 @@ package im.ycz.doumovie.ui.activity;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
@@ -12,32 +13,35 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.support.design.widget.TabLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import im.ycz.doumovie.R;
 import im.ycz.doumovie.api.MovieType;
 import im.ycz.doumovie.ui.fragment.BlankFragment;
 import im.ycz.doumovie.ui.fragment.MovieListFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private ViewPager mViewPager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         mViewPager = (ViewPager) findViewById(R.id.viewpager);
         setSupportActionBar(toolbar);
-        final ActionBar ab = getSupportActionBar();
+        ActionBar ab = getSupportActionBar();
         ab.setHomeButtonEnabled(true);
-
         setupViewPager();
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
@@ -56,9 +60,13 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(adapter);
     }
 
+    @OnClick(R.id.toolbar) public void onToolbarClicked() {
+        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     protected void onResume() {
-        super.onResume();
+       super.onResume();
     }
 
     @Override
@@ -77,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(this, AboutActivity.class);
+            startActivity(intent);
             return true;
         }
 

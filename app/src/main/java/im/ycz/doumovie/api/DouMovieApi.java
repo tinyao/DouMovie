@@ -4,9 +4,9 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import im.ycz.doumovie.api.model.ComingMoviesResult;
 import im.ycz.doumovie.api.model.IntheaterMoviesResult;
@@ -14,6 +14,8 @@ import im.ycz.doumovie.api.model.MovieListResult;
 import im.ycz.doumovie.api.model.NewMoviesResult;
 import im.ycz.doumovie.api.model.USMoviesResult;
 import im.ycz.doumovie.api.model.WeeklyMoviesResult;
+import im.ycz.doumovie.api.support.CustomErrorHandler;
+import im.ycz.doumovie.bus.MovieBus;
 import im.ycz.doumovie.domain.model.BoxMovie;
 import im.ycz.doumovie.domain.model.Movie;
 import im.ycz.doumovie.domain.model.RankedMovie;
@@ -32,6 +34,8 @@ import rx.functions.Func1;
 public class DouMovieApi {
 
     public static final String BASE_URL = "https://api.douban.com/v2/movie";
+
+    // 这个这个这个This API_KEY is from the official DoubanMovie client
     public static final String API_KEY = "0b2bdeda43b5688921839c8ecb20399b";
 
     private DouMovieService movieService;
@@ -47,6 +51,7 @@ public class DouMovieApi {
     }
 
     private void initRestAdapter() {
+
         RestAdapter adapter = new RestAdapter.Builder()
                 .setEndpoint(BASE_URL)
                 .setRequestInterceptor(new RequestInterceptor() {
@@ -55,6 +60,7 @@ public class DouMovieApi {
                         request.addQueryParam("apikey", API_KEY);
                     }
                 })
+                .setErrorHandler(new CustomErrorHandler(MovieBus.getBus()))
                 .build();
 
         movieService = adapter.create(DouMovieService.class);
